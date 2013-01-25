@@ -1,0 +1,11 @@
+#!/bin/sh   
+#mount -t sysfs sysfs /sys   
+#mount -t proc proc /proc
+mount -a   
+echo /sbin/mdev > /proc/sys/kernel/hotplug   
+mdev -s
+mkdir /ffmpeg
+mount -t ext4 /dev/mmcblk0p2 /ffmpeg
+export PATH=$PATH:/ffmpeg/bin/
+echo ramdisk_busybox
+/bin/sh
